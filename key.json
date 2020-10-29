@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nerdzandhiphop-b3a28",
+  "private_key_id": "ecf325ea6909ba0143ad6c2d2e4a5e998e4da2bb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7arWRuB/NXEaV\nBgtm55a3dwOY9xubGSaLjnySv2TQ2iLyZ+1hqxkO44ZRWeNspknW1iWS9a/MQZul\nz6gUCgqEjT1laKBObahMcGU2Uny223EdMoYGuTJEnlM6aQ5roxJnBG2T285vQTHw\n+mvqFl2p+ScfhEIDrlw6Ka4lnBdpgJc1My6lifVYpESItg+oPwxu+bMf6Z3hj4Sa\nq+P3w3V2POz++/fo31hX170Qaj0nmTAig5APBxQQuPxXmre5XSoD88nbD78X2HBw\nNufWyJkoiXJAM1bQnX2JHKmmyqsde/qM792hnAJLFqLkUYz1f0ufXJuGKXOQkfi3\nDTjluKWXAgMBAAECggEAWUOxeFbQuuC083y+CITMedSzP3OOz/gSLk0u0zxaucjz\n9S3/19GE7Vz8GBouooyvRaaYnd7sHOawyjBWNzkzGkAlWnwTQlejXcj4w/9UzElH\nnmb2hBRIN3uLW5o3FphEhxGKWW7La50LOuIjbQq7EN6NPkshoBw3bDJ28g3e7s3S\nR1+aTVClKFkLcCNvk4+Cg1IOucLC1JoucS0EStC7TGYIMkWjdiKrt6E2ZTqol6H9\nnm+uzQSx/MMB1wInCKyhjSV+TCMVg2TxKT4CsnRfJANt68WpZyuf8MImmiDgM9Jp\noTpUL6AE82D47dN+IyH5RfpXeBFlcuPU/qXeBzqLcQKBgQDe11a/YkFQhWc8RctV\nhq5Qpuvcsxd1S5xBBwj0m5XILhsLw/+mBXKL3FUuR2ltmPCsRsPXhxLZ93szpJQe\nNmUDOC8LKd3rCMCoR34tQnm9Lcie22F8DpSgOLnjOkIrE3Qes3uh2Lff94eiSQFo\nlCZL+2lzNqpsuZL1LtO6guG+JwKBgQDXTfShlB3KzSjZwA7HPruOXB/IHYKc++rI\nj+4H1plqqVHAB2vTwQT2jYEW6kq36RTJayA+iOruQumLF0VB4tQ+jH649mTr2/61\nwgX3GN2IYFBLyI0Z+JGtjwbZAX99AMlwX8aJ3q4sQ1yUAaqHdIq7bjOZiNhSkHiB\nREUE6mTzEQKBgQCyQrzIOIdbLHxbANIZxrVnG0COuk1HrYZ/lmsZkeSN0CQek1nM\nq4roSwdxD/tMiw3sImfD3++6oXjS5RL/4C+KFcW8Pm+h9sx3UUmkVwsfxKI6QfCH\n1voZ+YbqOM55uwQnExkRbVYaOd8seQ5BZFIGckX2voIym3jt3dnN16lR/QKBgEZZ\nnINnSEzJuH1d+fY0k0gy5deXfOQalF6wWNCK2Fo3tRSP2DW6rgp5tiJsr7lkGXyu\n2jxUtJ7hkjn2gpTCryM4+Pcq21MN8S4mlZhlsY0sG1CH2UMRK1iQkWY6zRNlPGzR\nfqfx8OtZn1hlKvlTpTkVCxsx0a04s4dZbUvr4sxhAoGAYsKT5fttdXszzK4aj26S\nKJ5ANXnP/xAVDRsj1xU67DU/oyHNI6i5kZpvbFMAI+NrLD4N3oiqk9ULXavKRWNG\neKhCo3J254nyUs2fLg0kyZhimuNWxUBQrxXerITOClwqeLTyXmb1cpSzJo2CC7qb\nWaNc2Dkv7h2eQyGFevZVsAo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "nerdzandhiphop-b3a28@appspot.gserviceaccount.com",
+  "client_id": "107271452440129338098",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nerdzandhiphop-b3a28%40appspot.gserviceaccount.com"
+}

@@ -1,4 +1,4 @@
 node_modules
 .vscode
-key.json
+# key.json
 .DS_Store

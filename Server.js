@@ -1,9 +1,6 @@
 const { Storage } = require("@google-cloud/storage");
-const http = require("https");
 const express = require("express");
 const app = express();
-const path = require("path");
-const fs = require("fs");
 const cors = require("cors");
 
 app.use(cors());
@@ -29,7 +26,7 @@ app.get("/stream/:fileName", async (req, res) => {
   // Creates a client from a Google service account key.
   const bucketFile = `videos/${req.params.fileName}`;
 
-  const storage = new Storage({ keyFilename: "./key.json" }); //TODO: place in env
+  const storage = new Storage({ keyFilename: "key.json" }); //TODO: place in env
 
   const bucket = storage.bucket("nerdzandhiphop-b3a28.appspot.com"); // get bucket from client
 
