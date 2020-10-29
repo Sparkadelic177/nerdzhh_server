@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(cors());
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // // Handle 404
 // app.use(function (req, res) {
