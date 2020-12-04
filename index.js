@@ -1,39 +1,50 @@
-
+require('dotenv').config()
 const { Storage } = require("@google-cloud/storage");
 const express = require("express");
 const app = express();
-const fs = require('fs');
-const path = require('path');
-const {chunkSizeStream, entireFileDownload} = require("./components/readStreams.js")
-
+const helmet = require('helmet')
 const cors = require("cors");
+
+const {chunkSizeStream, entireFileDownload} = require("./components/readStreams.js")
 const port = process.env.NODE_ENV || '3000';
 
 app.use(cors());
+app.use(helmet())
 
-app.get("/stream/:fileName", (req, res) => {
+async function configureBucketCors(storage) {
+  await storage.bucket(process.env.FB_BUCKET).setCorsConfiguration([
+    {
+      maxAgeSeconds: 3600,
+      method: ['*'],
+      origin: ['*'],
+      responseHeader: ['video/mp4'],
+    },
+  ]);
+}
 
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=500');
+
+app.get("/stream/:fileName", async (req, res) => {
+
+  // res.set('Cache-Control', 'public, max-age=300, s-maxage=500');
 
   const bucketFile = `videos/${req.params.fileName}`;
-  const storage = new Storage({ keyFilename: "key.json" });//TODO: place in env
-  const bucket = storage.bucket("nerdzandhiphop-b3a28.appspot.com") // get bucket from client
+  const storage = new Storage({ keyFilename: "key.json" });
+  const bucket = storage.bucket(process.env.FB_BUCKET);
   const remoteFile = bucket.file(bucketFile);
   const range = req.headers.range;
 
-  if(range){
+  if(range){//if range request avalible, pasrse start and end bytes
     const parts = range.replace(/bytes=/, "").split("-"); 
-    const start = parseInt(parts[0], 10) ;
-    //in some cases end may not exists, if its  not exists make it end of file
-    if(parts[1] === ''){
-      entireFileDownload(bucketFile, remoteFile, start, res)
-    }else{
+    const start = parseInt(parts[0], 10);
+    if(parts[1] === ''){//if end is not empty send client chunked stream
+      entireFileDownload(remoteFile, res, req)
+    }else{ //else send the entire file to the client
       const end = parseInt(parts[1], 10);
       const chunksize = (end - start) + 1 
-      chunkSizeStream(bucketFile, remoteFile, start, end, chunksize, res);
+      chunkSizeStream(remoteFile, start, end, chunksize, res);
     }
-  }else{
-      res.status(400).send("Requires Range header");
+  }else{//send 400 request for a bad request
+    res.status(400).send("Need to send range request")
   }
 
 });

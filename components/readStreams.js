@@ -1,50 +1,47 @@
-
 module.exports = { 
-    
-    chunkSizeStream: (bucketFile, remoteFile, start, end, chunksize, res) => {
-        //TODO: need the file to use its size in the content range
-        const fs = require('fs');
+    chunkSizeStream: (remoteFile, start, end, chunksize, res) => {
         remoteFile
-        .createReadStream({ start: start , end: end })
+        .createReadStream(null,{ start: start , end: end })
         .on("response", (response) => {
-
             const head = {
-            "Content-Range": `bytes ${start}-${end}/${response.headers['content-length']}`,
-            "Accept-Ranges": "bytes",
-            "Content-Length": chunksize,
-            "Content-Type": "video/mp4",
+                "Content-Range": `bytes ${start}-${end}/${response.headers['content-length']}`,
+                "Accept-Ranges": "bytes",
+                "Content-Length": chunksize,
+                "Content-Type": response.headers['content-type'],
             };
-
+            // console.log(JSON.stringify(response.headers))
             res.writeHead(206, head);
         }) 
         .on("error",  (err) => {
             console.log("Something happend to the stream" + err);
-            res.send(err);
+            res.status(500).send(err);
           })
         .on("end", () => {
             console.log("video complete");
         })
         .pipe(res);
     },
-    entireFileDownload: (bucketFile, remoteFile ,start , res)=> {
-        const fs = require('fs');
+    entireFileDownload: (remoteFile, res, req)=> {
         remoteFile
-        .createReadStream({start:start})
-        .on("response", (response) => {
-            const head = { 
-                "Content-Range": `bytes ${start}-${response.headers['content-length']}/${response.headers['content-length']}`,
+        .createReadStream(null, {start: 1000, end: 4000})
+        .on("response", function (response) {
+            // const retrievedLength =  response.headers["content-length"] - start;
+            const head = {
+                "Content-Range": `bytes ${1000}-${4000}/${
+                    response.headers["content-length"]
+                }`,
                 "Accept-Ranges": "bytes",
-                "Content-Length": response.headers['content-length'],
-                "Content-Type": "video/mp4",
-            } 
-            res.writeHead(200, head); 
-        }) 
-        .on("error",  (err) => {
-            console.log("Something happend to the stream" + err);
-            res.send(err);
+                "Content-Length":  response.headers["content-length"],
+                "Content-Type": response.headers['content-type'],
+            };
+            res.writeHead(200, head)
         })
-        .on("end", () => {
-            console.log("video complete");
+        .on("error", function (err) {
+        console.log("Something happend to the stream" + err);
+        res.status(500).send(err);
+        })
+        .on("end", function () {
+        console.log("video complete");
         })
         .pipe(res);
     }
